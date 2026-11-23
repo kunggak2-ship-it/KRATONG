@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลอยกระทงกับเค้ามั้ย? ♡</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Mali', cursive, sans-serif;
+        }
+        body {
+            background-color: #fff6f8;
+            background-image: radial-gradient(#ffd1dc 1.5px, transparent 1.5px);
+            background-size: 28px 28px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            color: #4a3b3c;
+        }
+        /* หัวใจลอยพื้นหลัง */
+        .bg-heart {
+            position: absolute;
+            color: #ffb3c6;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: floatUp 6s infinite ease-in-out;
+            user-select: none;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+        /* กล่องหลักและตัวละครด้านบน */
+        .wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 380px;
+            margin-top: 60px;
+            z-index: 10;
+        }
+        .character {
+            position: absolute;
+            top: -85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 100px;
+            z-index: 12;
+            text-align: center;
+        }
+        /* กรอบหน้าต่างสไตล์ Retro */
+        .window {
+            background: #ffffff;
+            border: 3px solid #5c4b4d;
+            border-radius: 16px;
+            box-shadow: 6px 6px 0px #ffd1dc;
+            overflow: visible;
+            position: relative;
+        }
+        .window-header {
+            background: #ffe5ec;
+            border-bottom: 3px solid #5c4b4d;
+            border-radius: 13px 13px 0 0;
+            padding: 8px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hearts-bar {
+            color: #ff8fab;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+        }
+        .window-dots {
+            display: flex;
+            gap: 5px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border: 2px solid #5c4b4d;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .window-body {
+            padding: 2.2rem 1.5rem 2rem;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: #4a3b3c;
+            margin-bottom: 0.75rem;
+        }
+        p {
+            font-size: 1.05rem;
+            color: #7a6668;
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+        }
+        /* กลุ่มปุ่มกด */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            min-height: 52px;
+        }
+        button {
+            font-family: 'Mali', cursive, sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 10px 28px;
+            border: 2.5px solid #5c4b4d;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.15s ease, background-color 0.2s;
+        }
+        .btn-yes {
+            background: #ffccd5;
+            color: #4a3b3c;
+            box-shadow: 0 3px 0 #5c4b4d;
+        }
+        .btn-yes:hover {
+            background: #ffb3c1;
+            transform: translateY(-2px);
+        }
+        .btn-yes:active {
+            transform: translateY(1px);
+            box-shadow: 0 1px 0 #5c4b4d;
+        }
+        .btn-no {
+            background: #f8f9fa;
+            color: #6c757d;
+            box-shadow: 0 3px 0 #5c4b4d;
+            z-index: 999;
+        }
+        /* ป้ายข้อความหน้าสำเร็จ */
+        .badge {
+            display: inline-block;
+            background: #fff0f3;
+            border: 2px solid #5c4b4d;
+            border-radius: 50px;
+            padding: 10px 22px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4a3b3c;
+            margin-bottom: 1.2rem;
+        }
+        .replay-link {
+            display: block;
+            font-size: 0.9rem;
+            color: #9e8a8c;
+            text-decoration: underline;
+            cursor: pointer;
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 5px;
+            margin: 0 auto;
+        }
+        .replay-link:hover {
+            color: #5c4b4d;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- หัวใจตกแต่งพื้นหลัง -->
+    <div class="bg-heart" style="top: 15%; left: 15%;">♡</div>
+    <div class="bg-heart" style="top: 25%; right: 18%; animation-delay: 1s;">♥</div>
+    <div class="bg-heart" style="bottom: 20%; left: 20%; animation-delay: 2s;">♥</div>
+    <div class="bg-heart" style="bottom: 18%; right: 15%; animation-delay: 1.5s;">♡</div>
+
+    <div class="wrapper">
+        <!-- น้องแมวถือกระทง (SVG วาดเส้นน่ารัก) -->
+        <div class="character">
+            <svg viewBox="0 0 140 120" width="125" height="110">
+                <!-- หูแมว -->
+                <path d="M35 45 L28 15 L55 32 Z" fill="#fff" stroke="#5c4b4d" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M105 45 L112 15 L85 32 Z" fill="#fff" stroke="#5c4b4d" stroke-width="3.5" stroke-linejoin="round"/>
+                <path d="M36 40 L32 22 L49 33 Z" fill="#ffb3c6"/>
+                <path d="M104 40 L108 22 L91 33 Z" fill="#ffb3c6"/>
+                <!-- หัวแมว -->
+                <ellipse cx="70" cy="58" rx="42" ry="34" fill="#fff" stroke="#5c4b4d" stroke-width="3.5"/>
+                <!-- ลายหน้าผาก -->
+                <path d="M63 26 L63 36 M70 25 L70 38 M77 26 L77 36" stroke="#b09e99" stroke-width="3" stroke-linecap="round"/>
+                <!-- ตายิ้ม -->
+                <path d="M47 54 Q52 47 57 54" fill="none" stroke="#5c4b4d" stroke-width="3" stroke-linecap="round"/>
+                <path d="M83 54 Q88 47 93 54" fill="none" stroke="#5c4b4d" stroke-width="3" stroke-linecap="round"/>
+                <!-- แก้มแดง -->
+                <ellipse cx="43" cy="63" rx="6" ry="3.5" fill="#ffb3c6" opacity="0.8"/>
+                <ellipse cx="97" cy="63" rx="6" ry="3.5" fill="#ffb3c6" opacity="0.8"/>
+                <!-- ปากยิ้ม -->
+                <path d="M64 62 Q70 70 76 62 Z" fill="#ff8fab" stroke="#5c4b4d" stroke-width="2.5" stroke-linejoin="round"/>
+                <!-- กระทง -->
+                <path d="M48 85 L92 85 L85 102 L55 102 Z" fill="#95d5b2" stroke="#5c4b4d" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M52 85 L60 76 L67 85 L73 76 L80 85 L88 76 L92 85" fill="#74c69d" stroke="#5c4b4d" stroke-width="2.5" stroke-linejoin="round"/>
+                <!-- ธูปเทียน -->
+                <line x1="70" y1="78" x2="70" y2="66" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="70" cy="62" r="3" fill="#ff758f"/>
+                <!-- มือแมวถือกระทง -->
+                <circle cx="48" cy="88" r="7" fill="#fff" stroke="#5c4b4d" stroke-width="3"/>
+                <circle cx="92" cy="88" r="7" fill="#fff" stroke="#5c4b4d" stroke-width="3"/>
+                <!-- หัวใจเล็กๆ ข้างหู -->
+                <text x="12" y="55" font-size="16" fill="#ff8fab">♡</text>
+            </svg>
+        </div>
+
+        <!-- หน้าต่างหลัก -->
+        <div class="window">
+            <div class="window-header">
+                <div class="hearts-bar">♥ ♥ ♥ ♥ ♥</div>
+                <div class="window-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <!-- หน้าที่ 1: คำถามชวนลอยกระทง -->
+            <div class="window-body" id="askPage">
+                <h1>ลอยกระทงกับเค้ามั้ย? ♡</h1>
+                <p>คืนนี้ไปลอยกระทงด้วยกันนะ<br>เค้าอยากไปกับเธอที่สุดเลย!</p>
+                
+                <div class="btn-group">
+                    <button class="btn-yes" onclick="sayYes()">ไป ♡</button>
+                    <button class="btn-no" id="noBtn" onmouseover="runAway()" onclick="runAway()" ontouchstart="runAway()">ไม่ไป</button>
+                </div>
+            </div>
+
+            <!-- หน้าที่ 2: เมื่อกดปุ่ม "ไป" -->
+            <div class="window-body hidden" id="yesPage">
+                <h1>เย้! ไปด้วยกันแล้ว ♡</h1>
+                <p>งั้นเตรียมตัวให้พร้อมนะ<br>เราไปลอยกระทงด้วยกันเลย!</p>
+                
+                <div class="badge">แล้วเจอกันวันลอยกระทงนะ ♡</div>
+                <button class="replay-link" onclick="resetPage()">เล่นอีกครั้ง</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const askPage = document.getElementById('askPage');
+        const yesPage = document.getElementById('yesPage');
+
+        const noTexts = [
+            'ไม่ไป',
+            'แน่ใจนะ?',
+            'จับไม่ได้หรอก~',
+            'ไปเถอะนะ ♡',
+            'งอนแล้วนะ!'
+        ];
+        let textIndex = 0;
+
+        function runAway() {
+            noBtn.style.position = 'fixed';
+
+            const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+            const randomX = Math.max(20, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(20, Math.floor(Math.random() * maxY));
+
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+
+            textIndex = (textIndex + 1) % noTexts.length;
+            noBtn.textContent = noTexts[textIndex];
+        }
+
+        function sayYes() {
+            askPage.classList.add('hidden');
+            yesPage.classList.remove('hidden');
+            noBtn.classList.add('hidden');
+        }
+
+        function resetPage() {
+            yesPage.classList.add('hidden');
+            askPage.classList.remove('hidden');
+
+            noBtn.classList.remove('hidden');
+            noBtn.style.position = '';
+            noBtn.style.left = '';
+            noBtn.style.top = '';
+            textIndex = 0;
+            noBtn.textContent = noTexts[0];
+        }
+    </script>
+</body>
+                  </html>
+                  
